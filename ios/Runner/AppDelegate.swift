@@ -9,23 +9,22 @@ import Flutter
   ) -> Bool {
 
     let controller: FlutterViewController = window?.rootViewController as! FlutterViewController
-    let batteryChannel = FlutterMethodChannel(name:"sample.flutter.dev/battery",binaryMessenger:controller.binaryMessenger)
+    let methodChannel = FlutterMethodChannel(name:"sample.flutter.dev",binaryMessenger:controller.binaryMessenger)
 
 
-    batteryChannel.setMethodCallHandler({
+    methodChannel.setMethodCallHandler({
       (call:FlutterMethodCall,result:@escaping FlutterResult) -> Void in
         
-        guard call.method == "getBatteryLevel" else {
+        switch call.method {
+        case "getBatteryLevel":
+            self.receiveBatteryLevel(result: result)
+        case "getCamera":
+            self.receiveCamera(result:result,controller:controller)
+        default:
             result(FlutterMethodNotImplemented)
             return
         }
-        self.receiveBatteryLevel(result: result)
 
-//      if call.method == "getMessage" {
-//        result("Hello from iOS")
-//      } else {
-//        result(FlutterMethodNotImplemented)
-//      }
     })
 
     GeneratedPluginRegistrant.register(with: self)  
@@ -40,6 +39,12 @@ import Flutter
         } else {
             result(Int(device.batteryLevel * 100))
         }
+    }
+    
+    private func receiveCamera(result:FlutterResult,controller:FlutterViewController) {
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+        controller.present(pickerController,animated:true,completion:nil)
     }
 }
 
