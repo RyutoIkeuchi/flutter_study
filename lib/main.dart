@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_learn/count_up.dart';
 import 'package:riverpod_learn/native_camera.dart';
-import 'package:riverpod_learn/native_page.dart';
+import 'package:riverpod_learn/native_battery_level.dart';
 
 void main() {
   runApp(
