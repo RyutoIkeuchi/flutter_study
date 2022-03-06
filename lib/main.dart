@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_learn/count_up.dart';
 import 'package:riverpod_learn/native_camera.dart';
 import 'package:riverpod_learn/native_battery_level.dart';
+import 'package:riverpod_learn/native_page.dart';
 
 void main() {
   runApp(
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NativeCamera(),
+      home: NativePage(),
     );
   }
 }

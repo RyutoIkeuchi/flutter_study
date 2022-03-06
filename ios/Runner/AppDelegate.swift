@@ -20,6 +20,9 @@ import Flutter
             self.receiveBatteryLevel(result: result)
         case "getCamera":
             self.receiveCamera(result:result,controller:controller)
+        case "getViewController":
+            let nextController = controller.storyboard?.instantiateViewController(withIdentifier: "NativeViewController")
+            controller.present(nextController!,animated: true,completion: nil)
         default:
             result(FlutterMethodNotImplemented)
             return

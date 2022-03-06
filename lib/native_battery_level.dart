@@ -21,7 +21,7 @@ class BatteryModel extends ChangeNotifier {
   }
 }
 
-class NativePage extends StatelessWidget {
+class NativeBattery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
